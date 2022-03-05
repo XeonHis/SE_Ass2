@@ -28,6 +28,17 @@ public class Main
 		String classString = JSONObject.toJSONString(classArray);
 		listOfClass = JSONObject.parseArray(classString, Class.class);
 
+		for (int i = 0; i<listOfClass.size(); i++){
+			String currentClassName = listOfClass.get(i).getClassName();
+//			System.out.println(currentClassName);
+			for (int j = 0; j <listOfTeacher.size(); j++) {
+			    String currentTeacherMajor=listOfTeacher.get(j).getMajor();
+				if(currentClassName.equals(currentTeacherMajor)){
+					System.out.println(listOfTeacher.get(j).getName() + " teaches "+currentClassName);
+				}
+			}
+		}
+
 
 	}
 }

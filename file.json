@@ -1,0 +1,78 @@
+{
+  "teaching requirements": [
+    {
+      "classname": "math",
+      "college": "School of Science"
+    },
+    {
+      "classname": "physics",
+      "college": "School of Science"
+    },
+    {
+      "classname": "history",
+      "college": "School of Arts"
+    },
+    {
+      "classname": "chemistry",
+      "college": "School of Science"
+    }
+  ],
+  "Teacher": [
+    {
+      "name": "Bob",
+      "major": "history",
+      "teaching_year": 10,
+      "course_on_charge": 2,
+      "student_rating": 6
+    },
+    {
+      "name": "Mike",
+      "major": "math",
+      "teaching_year": 5,
+      "course_on_charge": 2,
+      "student_rating": 8
+    },
+    {
+      "name": "Tom",
+      "major": "physics",
+      "teaching_year": 3,
+      "course_on_charge": 4,
+      "student_rating": 5
+    },
+    {
+      "name": "Steve",
+      "major": "chemistry",
+      "teaching_year": 7,
+      "course_on_charge": 0,
+      "student_rating": 3
+    },
+    {
+      "name": "Steve",
+      "major": "math",
+      "teaching_year": 7,
+      "course_on_charge": 1,
+      "student_rating": 10
+    },
+    {
+      "name": "Will",
+      "major": "physics",
+      "teaching_year": 1,
+      "course_on_charge": 1,
+      "student_rating": 6
+    },
+    {
+      "name": "Clark",
+      "major": "math",
+      "teaching_year": 8,
+      "course_on_charge": 3,
+      "student_rating": 7
+    },
+    {
+      "name": "Steve",
+      "major": "history",
+      "teaching_year": 7,
+      "course_on_charge": 0,
+      "student_rating": 9
+    }
+  ]
+}

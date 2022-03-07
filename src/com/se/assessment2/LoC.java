@@ -41,6 +41,19 @@ public class LoC
 			classList[j] = classList[j + 1];
 	}
 
+	public Class find(String name)
+	{
+		for (Class cls :
+				classList)
+		{
+			if (cls.getClassName().equals(name))
+			{
+				return cls;
+			}
+		}
+		return null;
+	}
+
 
 	public int getSize()
 	{

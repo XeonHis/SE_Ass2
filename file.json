@@ -21,58 +21,50 @@
     {
       "name": "Bob",
       "major": "history",
-      "teaching_year": 10,
-      "course_on_charge": 2,
-      "student_rating": 6
+      "student_rating": 6,
+      "train": false
     },
     {
       "name": "Mike",
       "major": "math",
-      "teaching_year": 5,
-      "course_on_charge": 2,
-      "student_rating": 8
+      "student_rating": 8,
+      "train": false
     },
     {
       "name": "Tom",
       "major": "physics",
-      "teaching_year": 3,
-      "course_on_charge": 4,
-      "student_rating": 5
+      "student_rating": 5,
+      "train": false
     },
     {
       "name": "Steve",
       "major": "chemistry",
-      "teaching_year": 7,
-      "course_on_charge": 0,
-      "student_rating": 3
+      "student_rating": 3,
+      "train": false
     },
     {
-      "name": "Steve",
+      "name": "James",
       "major": "math",
-      "teaching_year": 7,
-      "course_on_charge": 1,
-      "student_rating": 10
+      "student_rating": 10,
+      "train": false
     },
     {
       "name": "Will",
       "major": "physics",
-      "teaching_year": 1,
-      "course_on_charge": 1,
-      "student_rating": 6
+      "student_rating": 6,
+      "train": false
     },
     {
       "name": "Clark",
       "major": "math",
-      "teaching_year": 8,
-      "course_on_charge": 3,
-      "student_rating": 7
+      "student_rating": 7,
+      "train": false
     },
     {
-      "name": "Steve",
+      "name": "Henson",
       "major": "history",
-      "teaching_year": 7,
-      "course_on_charge": 0,
-      "student_rating": 9
+      "student_rating": 9,
+      "train": false
     }
   ]
 }

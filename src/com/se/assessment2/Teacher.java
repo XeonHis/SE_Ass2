@@ -2,8 +2,11 @@ package com.se.assessment2;
 
 public class Teacher
 {
+	private String major;
+	private int student_rating;
 	private String name;
 	private Class cls;
+	private boolean train;
 
 	public Class getCls()
 	{
@@ -14,7 +17,9 @@ public class Teacher
 	{
 		this.cls = cls;
 	}
-	public void addClass(Class cls){
+
+	public void addClass(Class cls)
+	{
 		this.setCls(cls);
 	}
 
@@ -22,22 +27,6 @@ public class Teacher
 	{
 	}
 
-	@Override
-	public String toString()
-	{
-		return "Teacher{" +
-				"name='" + name + '\'' +
-				", major='" + major + '\'' +
-				", teaching_year=" + teaching_year +
-				", course_on_charge=" + course_on_charge +
-				", student_rating=" + student_rating +
-				'}';
-	}
-
-	private String major;
-	private int teaching_year;
-	private int course_on_charge;
-	private int student_rating;
 
 	public String getName()
 	{
@@ -59,25 +48,6 @@ public class Teacher
 		this.major = major;
 	}
 
-	public int getTeaching_year()
-	{
-		return teaching_year;
-	}
-
-	public void setTeaching_year(int teaching_year)
-	{
-		this.teaching_year = teaching_year;
-	}
-
-	public int getCourse_on_charge()
-	{
-		return course_on_charge;
-	}
-
-	public void setCourse_on_charge(int course_on_charge)
-	{
-		this.course_on_charge = course_on_charge;
-	}
 
 	public int getStudent_rating()
 	{
@@ -89,12 +59,30 @@ public class Teacher
 		this.student_rating = student_rating;
 	}
 
-	public Teacher(String name, String major, int teaching_year, int course_on_charge, int student_rating)
+	public boolean isTrain()
+	{
+		return train;
+	}
+
+	public void setTrain(boolean train)
+	{
+		this.train = train;
+	}
+
+	public Teacher(String name, String major, int student_rating)
 	{
 		this.name = name;
 		this.major = major;
-		this.teaching_year = teaching_year;
-		this.course_on_charge = course_on_charge;
 		this.student_rating = student_rating;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "Teacher{" +
+				"name='" + name + '\'' +
+				", major='" + major + '\'' +
+				", student_rating=" + student_rating +
+				'}';
 	}
 }

@@ -41,6 +41,18 @@ public class LoT
 			teacherList[j] = teacherList[j + 1];
 	}
 
+	public Teacher find(String name)
+	{
+		for (Teacher teacher :
+				teacherList)
+		{
+			if (teacher.getName().equals(name))
+			{
+				return teacher;
+			}
+		}
+		return null;
+	}
 
 	public int getSize()
 	{

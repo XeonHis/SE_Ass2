@@ -38,13 +38,22 @@ public class Main
 				{
 					if (listOfTeacher.get(j).getStudent_rating() > tempRate)
 					{
-						assignment.put(listOfTeacher.get(j).getName(),currentClassName);
+						assignment.put(currentClassName,listOfTeacher.get(j).getName());
 						tempRate = listOfTeacher.get(j).getStudent_rating();
 					}
 				}
 			}
 		}
 		System.out.println(assignment);
+		for (Map.Entry<String, String> entry:
+		assignment.entrySet())
+		{
+			Teacher teacher = listOfTeacher.find(entry.getValue());
+			Class cls = listOfClass.find(entry.getKey());
+			teacher.addClass(cls);
+			teacher.setTrain(true);
+			cls.addTeacher(teacher);
+		}
 
 
 	}

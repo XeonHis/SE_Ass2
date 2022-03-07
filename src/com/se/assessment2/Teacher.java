@@ -79,10 +79,8 @@ public class Teacher
 	@Override
 	public String toString()
 	{
-		return "Teacher{" +
-				"name='" + name + '\'' +
-				", major='" + major + '\'' +
-				", student_rating=" + student_rating +
-				'}';
+		return "name=" + name +
+				", major=" + major +
+				", student_rating=" + student_rating;
 	}
 }

@@ -1,66 +1,70 @@
 package com.se.assessment2;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 
 import javax.swing.*;
-import java.util.HashMap;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Map;
 
 public class Main
 {
 	public static void main(String[] args)
 	{
-		LoC listOfClass = new LoC();
-		LoT listOfTeacher = new LoT();
+		classDirector classDirector = new classDirector();
+		classDirector.addClass("file.json");
+		classDirector.addTeacher("file.json");
+
+		Admin admin = new Admin();
+		Map<String, String> assignment = admin.getAssignment();
 
 
-		String content = Utils.readFile("file.json");
-		String teacherJsonString = JSONObject.toJSONString(JSON.parseObject(content).getJSONArray("Teacher"));
-		String classJsonString = JSONObject.toJSONString(JSON.parseObject(content).getJSONArray("teaching requirements"));
-		for (Teacher aTeacher : JSONObject.parseArray(teacherJsonString, Teacher.class))
+		JFrame jf = new JFrame();
+		jf.setLayout(new BorderLayout(10, 5));
+		jf.setResizable(true);
+		jf.setSize(800, 600);
+
+		JTextPane textPane = new JTextPane();
+		textPane.setPreferredSize(new Dimension(400, 600));
+		JButton getClassBtn = new JButton("get class");
+		getClassBtn.addMouseListener(new MouseAdapter()
 		{
-			listOfTeacher.addTeacher(aTeacher);
-		}
-		for (Class aClass : JSONObject.parseArray(classJsonString, Class.class))
-		{
-			listOfClass.addClass(aClass);
-		}
-
-		Map<String, String> assignment = new HashMap<>();
-
-		for (int i = 0; i < listOfClass.getSize(); i++)
-		{
-			String currentClassName = listOfClass.get(i).getClassName();
-			int tempRate = -1;
-			for (int j = 0; j < listOfTeacher.getSize(); j++)
+			@Override
+			public void mouseClicked(MouseEvent e)
 			{
-				String currentTeacherMajor = listOfTeacher.get(j).getMajor();
-				if (currentClassName.equals(currentTeacherMajor))
+				textPane.setText("");
+				LoC classList = singleList.getClassList();
+				for (int i = 0; i < classList.getSize(); i++)
 				{
-					if (listOfTeacher.get(j).getStudent_rating() > tempRate)
-					{
-						assignment.put(currentClassName,listOfTeacher.get(j).getName());
-						tempRate = listOfTeacher.get(j).getStudent_rating();
-					}
+					String temp = classList.get(i).getCollege() + ": " + classList.get(i).getClassName();
+					textPane.setText(textPane.getText() + temp + "\n");
 				}
 			}
-		}
-		System.out.println(assignment);
-		for (Map.Entry<String, String> entry:
-		assignment.entrySet())
-		{
-			Teacher teacher = listOfTeacher.find(entry.getValue());
-			Class cls = listOfClass.find(entry.getKey());
-			teacher.addClass(cls);
-			teacher.setTrain(true);
-			cls.addTeacher(teacher);
-		}
+		});
 
-		JFrame jf=new JFrame();
-		JTextPane textPane1 = new JTextPane();
-		jf.setContentPane(textPane1);
-		textPane1.setText(assignment.toString());
+		JButton getTeacherBtn = new JButton("get teacher");
+		getTeacherBtn.addMouseListener(new MouseAdapter()
+		{
+			@Override
+			public void mouseClicked(MouseEvent e)
+			{
+				textPane.setText("");
+				LoT teacherList = singleList.getTeacherList();
+				for (int i = 0; i < teacherList.getSize(); i++)
+				{
+					String temp = teacherList.get(i).toString();
+					textPane.setText(textPane.getText() + temp + "\n");
+				}
+			}
+		});
+
+		JPanel jPanel = new JPanel(new FlowLayout());
+		jPanel.add(getClassBtn);
+		jPanel.add(getTeacherBtn);
+
+		jf.add(textPane, BorderLayout.NORTH);
+		jf.add(jPanel,BorderLayout.SOUTH);
+
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jf.pack();
 		jf.setVisible(true);

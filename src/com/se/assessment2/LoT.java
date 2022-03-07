@@ -44,7 +44,16 @@ public class LoT
 
 	public int getSize()
 	{
-		return teacherList.length;
+		int count = 0;
+		for (Teacher teacher :
+				teacherList)
+		{
+			if (teacher != null)
+			{
+				count++;
+			}
+		}
+		return count;
 	}
 
 

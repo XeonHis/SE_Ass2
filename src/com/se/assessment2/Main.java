@@ -1,12 +1,9 @@
 package com.se.assessment2;
 
-
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-
-import java.util.Iterator;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main
 {
@@ -28,18 +25,28 @@ public class Main
 			listOfClass.addClass(aClass);
 		}
 
+		Map<String, String> assignment = new HashMap<>();
 
-//		for (int i = 0; i<listOfClass.size(); i++){
-//			String currentClassName = listOfClass.get(i).getClassName();
-//			System.out.println(currentClassName);
-//			for (int j = 0; j <listOfTeacher.size(); j++) {
-//			    String currentTeacherMajor=listOfTeacher.get(j).getMajor();
-//				if(currentClassName.equals(currentTeacherMajor)){
-//					System.out.println(listOfTeacher.get(j).getName() + " teaches "+currentClassName);
-//				}
-//			}
-//		}
+		for (int i = 0; i < listOfClass.getSize(); i++)
+		{
+			String currentClassName = listOfClass.get(i).getClassName();
+			int tempRate = -1;
+			for (int j = 0; j < listOfTeacher.getSize(); j++)
+			{
+				String currentTeacherMajor = listOfTeacher.get(j).getMajor();
+				if (currentClassName.equals(currentTeacherMajor))
+				{
+					if (listOfTeacher.get(j).getStudent_rating() > tempRate)
+					{
+						assignment.put(listOfTeacher.get(j).getName(),currentClassName);
+						tempRate = listOfTeacher.get(j).getStudent_rating();
+					}
+				}
+			}
+		}
+		System.out.println(assignment);
 
 
 	}
+
 }

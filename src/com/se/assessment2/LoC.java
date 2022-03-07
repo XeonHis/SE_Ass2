@@ -44,7 +44,16 @@ public class LoC
 
 	public int getSize()
 	{
-		return classList.length;
+		int count = 0;
+		for (Class cls :
+				classList)
+		{
+			if (cls != null)
+			{
+				count++;
+			}
+		}
+		return count;
 	}
 
 

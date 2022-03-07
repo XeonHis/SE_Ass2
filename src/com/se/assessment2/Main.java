@@ -5,39 +5,40 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
-import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 
 public class Main
 {
 	public static void main(String[] args)
 	{
-		List<Class> listOfClass;
-		List<Teacher> listOfTeacher;
+		LoC listOfClass = new LoC();
+		LoT listOfTeacher = new LoT();
 
 
-		String teacherContent = Utils.readFile("file.json");
-		JSONObject teacherJsonObject = JSON.parseObject(teacherContent);
-		JSONArray teacherArray = teacherJsonObject.getJSONArray("Teacher");
-		String teacherString = JSONObject.toJSONString(teacherArray);
-		listOfTeacher = JSONObject.parseArray(teacherString, Teacher.class);
-
-		String classContent = Utils.readFile("file.json");
-		JSONObject classJsonObject = JSON.parseObject(classContent);
-		JSONArray classArray = classJsonObject.getJSONArray("teaching requirements");
-		String classString = JSONObject.toJSONString(classArray);
-		listOfClass = JSONObject.parseArray(classString, Class.class);
-
-		for (int i = 0; i<listOfClass.size(); i++){
-			String currentClassName = listOfClass.get(i).getClassName();
-//			System.out.println(currentClassName);
-			for (int j = 0; j <listOfTeacher.size(); j++) {
-			    String currentTeacherMajor=listOfTeacher.get(j).getMajor();
-				if(currentClassName.equals(currentTeacherMajor)){
-					System.out.println(listOfTeacher.get(j).getName() + " teaches "+currentClassName);
-				}
-			}
+		String content = Utils.readFile("file.json");
+		String teacherJsonString = JSONObject.toJSONString(JSON.parseObject(content).getJSONArray("Teacher"));
+		String classJsonString = JSONObject.toJSONString(JSON.parseObject(content).getJSONArray("teaching requirements"));
+		for (Teacher aTeacher : JSONObject.parseArray(teacherJsonString, Teacher.class))
+		{
+			listOfTeacher.addTeacher(aTeacher);
 		}
+		for (Class aClass : JSONObject.parseArray(classJsonString, Class.class))
+		{
+			listOfClass.addClass(aClass);
+		}
+
+
+//		for (int i = 0; i<listOfClass.size(); i++){
+//			String currentClassName = listOfClass.get(i).getClassName();
+//			System.out.println(currentClassName);
+//			for (int j = 0; j <listOfTeacher.size(); j++) {
+//			    String currentTeacherMajor=listOfTeacher.get(j).getMajor();
+//				if(currentClassName.equals(currentTeacherMajor)){
+//					System.out.println(listOfTeacher.get(j).getName() + " teaches "+currentClassName);
+//				}
+//			}
+//		}
 
 
 	}

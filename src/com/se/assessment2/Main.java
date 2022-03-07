@@ -2,6 +2,8 @@ package com.se.assessment2;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+
+import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,6 +56,14 @@ public class Main
 			teacher.setTrain(true);
 			cls.addTeacher(teacher);
 		}
+
+		JFrame jf=new JFrame();
+		JTextPane textPane1 = new JTextPane();
+		jf.setContentPane(textPane1);
+		textPane1.setText(assignment.toString());
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jf.pack();
+		jf.setVisible(true);
 
 
 	}

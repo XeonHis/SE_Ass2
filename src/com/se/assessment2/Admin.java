@@ -22,7 +22,7 @@ public class Admin extends Staff
 	}
 
 	// Store assignment of class and teacher
-	private static Map<String, String> assignment = new HashMap<>();
+	private static final Map<String, String> assignment = new HashMap<>();
 
 	public static Map<String, String> getAssignment()
 	{
@@ -31,18 +31,16 @@ public class Admin extends Staff
 
 	/**
 	 * Algorithm to find assignment (select highest student rating one if same major).
-	 *
-	 * @return Automatic assignment
 	 */
 	public static void findAssignment()
 	{
 		/*
 		Iterate all classes requirements
 		 */
-		for (int i = 0; i < SingleList.getClassList().getSize(); i++)
+		for (int i = 0; i < ListOfClass.getInstance().getSize(); i++)
 		{
 			// Get current class object
-			Class currentClass = (Class) SingleList.getClassList().get(i);
+			Class currentClass = (Class) ListOfClass.getInstance().get(i);
 			// Get current class name
 			String currentClassName = currentClass.getClassName();
 			// Set temporary student rating as -1 for further comparison
@@ -50,10 +48,10 @@ public class Admin extends Staff
 			/*
 			Iterate all teachers
 			 */
-			for (int j = 0; j < SingleList.getTeacherList().getSize(); j++)
+			for (int j = 0; j < ListOfTeacher.getInstance().getSize(); j++)
 			{
 				// Get current teacher object
-				Teacher currentTeacher = (Teacher) SingleList.getTeacherList().get(j);
+				Teacher currentTeacher = (Teacher) ListOfTeacher.getInstance().get(j);
 				// Get current teacher's major
 				String currentTeacherMajor = currentTeacher.getMajor();
 				/*
@@ -76,8 +74,8 @@ public class Admin extends Staff
 		for (Map.Entry<String, String> entry :
 				assignment.entrySet())
 		{
-			Teacher teacher = SingleList.getTeacherList().find(entry.getValue());
-			Class cls = SingleList.getClassList().find(entry.getKey());
+			Teacher teacher = ListOfTeacher.getInstance().find(entry.getValue());
+			Class cls = ListOfClass.getInstance().find(entry.getKey());
 			teacher.addClass(cls);
 			teacher.setTrain(true);
 			cls.addTeacher(teacher);

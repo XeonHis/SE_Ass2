@@ -6,11 +6,23 @@ package com.se.assessment2;
  */
 public class ListOfTeacher extends ListOfSomething
 {
+	private static final ListOfTeacher instance = new ListOfTeacher();
+
 	/**
 	 * Non-parameterized constructor
 	 */
-	public ListOfTeacher()
+	private ListOfTeacher()
 	{
+	}
+
+	/**
+	 * Get ListOfTeacher instance
+	 *
+	 * @return ListOfTeacher object
+	 */
+	public static ListOfTeacher getInstance()
+	{
+		return instance;
 	}
 
 	/**

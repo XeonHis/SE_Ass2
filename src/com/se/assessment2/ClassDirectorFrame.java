@@ -29,7 +29,7 @@ public class ClassDirectorFrame extends JFrame
 
 		// Create and add tip label components
 		classAddPanel.add(new JLabel("Manually Add Class"), BorderLayout.NORTH);
-		teacherAddPanel.add(new JLabel("Manully Add Teacher"), BorderLayout.NORTH);
+		teacherAddPanel.add(new JLabel("Manually Add Teacher"), BorderLayout.NORTH);
 
 		// Create text input panel
 		JPanel classInputPanel = new JPanel(new GridLayout(2, 2, 5, 5));
@@ -91,7 +91,7 @@ public class ClassDirectorFrame extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				ListOfClass classList = SingleList.getClassList();
+				ListOfClass classList = ListOfClass.getInstance();
 				Class newClass = new Class(classJTextArea.getText(), collegeJTextArea.getText());
 				classList.add(newClass);
 				JOptionPane.showMessageDialog(null,
@@ -103,7 +103,7 @@ public class ClassDirectorFrame extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				ListOfTeacher teacherList = SingleList.getTeacherList();
+				ListOfTeacher teacherList = ListOfTeacher.getInstance();
 				Teacher newTeacher = new Teacher(
 						teacherNameJTextArea.getText(),
 						Integer.parseInt(teacherIdJTextArea.getText()),

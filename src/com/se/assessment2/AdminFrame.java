@@ -38,9 +38,9 @@ public class AdminFrame extends JFrame
 		JScrollPane classScrollPane = new JScrollPane();
 		// List model to store class object
 		DefaultListModel<Class> classModel = new DefaultListModel<>();
-		for (int i = 0; i < SingleList.getClassList().getSize(); i++)
+		for (int i = 0; i < ListOfClass.getInstance().getSize(); i++)
 		{
-			classModel.add(i, (Class) SingleList.getClassList().get(i));
+			classModel.add(i, (Class) ListOfClass.getInstance().get(i));
 		}
 		// JList to show class object
 		JList<Class> classJList = new JList<>(classModel);
@@ -60,9 +60,9 @@ public class AdminFrame extends JFrame
 		JScrollPane teacherScrollPane = new JScrollPane();
 		// List model to store teacher object
 		DefaultListModel<Teacher> teacherModel = new DefaultListModel<>();
-		for (int i = 0; i < SingleList.getTeacherList().getSize(); i++)
+		for (int i = 0; i < ListOfTeacher.getInstance().getSize(); i++)
 		{
-			teacherModel.add(i, (Teacher) SingleList.getTeacherList().get(i));
+			teacherModel.add(i, (Teacher) ListOfTeacher.getInstance().get(i));
 		}
 		// JList to show teacher object
 		JList<Teacher> teacherJList = new JList<>(teacherModel);

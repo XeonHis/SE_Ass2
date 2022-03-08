@@ -32,7 +32,7 @@ public class ClassDirector extends Staff
 		String classJsonString = JSONObject.toJSONString(JSON.parseObject(content).getJSONArray("Class Requirements"));
 		for (Class aClass : JSONObject.parseArray(classJsonString, Class.class))
 		{
-			SingleList.getClassList().add(aClass);
+			ListOfClass.getInstance().add(aClass);
 		}
 	}
 
@@ -47,7 +47,7 @@ public class ClassDirector extends Staff
 		String teacherJsonString = JSONObject.toJSONString(JSON.parseObject(content).getJSONArray("Teacher Details"));
 		for (Teacher aTeacher : JSONObject.parseArray(teacherJsonString, Teacher.class))
 		{
-			SingleList.getTeacherList().add(aTeacher);
+			ListOfTeacher.getInstance().add(aTeacher);
 		}
 	}
 }

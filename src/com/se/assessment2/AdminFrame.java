@@ -115,7 +115,14 @@ public class AdminFrame extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				resultRefresh(resultModel);
+				// Check whether show automatic assignment
+				int value = JOptionPane.showConfirmDialog(null,
+						"Manually Assignment will Discord if not Export! Confirm Automatic Assignment?");
+				if (value == JOptionPane.YES_OPTION)
+				{
+					Admin.findAssignment();
+					resultRefresh(resultModel);
+				}
 			}
 		});
 		// Create manually assign button

@@ -26,7 +26,6 @@ public class Admin extends Staff
 
 	public static Map<String, String> getAssignment()
 	{
-		findAssignment();
 		return assignment;
 	}
 
@@ -35,7 +34,7 @@ public class Admin extends Staff
 	 *
 	 * @return Automatic assignment
 	 */
-	private static void findAssignment()
+	public static void findAssignment()
 	{
 		/*
 		Iterate all classes requirements

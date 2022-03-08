@@ -1,18 +1,12 @@
 package com.se.assessment2;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 public class Main
@@ -46,18 +40,6 @@ public class Main
 		JList<Class> classJList = new JList<>(classModel);
 		classScrollPane.setViewportView(classJList);
 
-		classJList.addListSelectionListener(new ListSelectionListener()
-		{
-			@Override
-			public void valueChanged(ListSelectionEvent e)
-			{
-				if (!classJList.getValueIsAdjusting())
-				{
-					System.out.println(classJList.getSelectedValue());
-				}
-			}
-		});
-
 		classPanel.add(classLabel, BorderLayout.NORTH);
 		classPanel.add(classScrollPane, BorderLayout.CENTER);
 
@@ -75,18 +57,6 @@ public class Main
 		JList<Teacher> teacherJList = new JList<>(teacherModel);
 		teacherScrollPane.setViewportView(teacherJList);
 
-		teacherJList.addListSelectionListener(new ListSelectionListener()
-		{
-			@Override
-			public void valueChanged(ListSelectionEvent e)
-			{
-				if (!teacherJList.getValueIsAdjusting())
-				{
-					System.out.println(teacherJList.getSelectedValue());
-				}
-			}
-		});
-
 		teacherPanel.add(teacherLabel, BorderLayout.NORTH);
 		teacherPanel.add(teacherScrollPane, BorderLayout.CENTER);
 
@@ -98,13 +68,7 @@ public class Main
 
 		JScrollPane resultScrollPane = new JScrollPane();
 		DefaultListModel<String> resultModel = new DefaultListModel<>();
-		for (Map.Entry<String, String> entry :
-				assignment.entrySet())
-		{
-			resultModel.add(0, entry.getKey() + ": " + entry.getValue());
-		}
 		JList<String> resultJList = new JList<>(resultModel);
-		resultJList.setVisible(false);
 		resultScrollPane.setViewportView(resultJList);
 
 
@@ -120,11 +84,32 @@ public class Main
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				resultJList.setVisible(true);
+				resultRefresh(resultModel, assignment);
 			}
 		});
 
 		JButton manualAssignBtn = new JButton("Manual Assign");
+		manualAssignBtn.addMouseListener(new MouseAdapter()
+		{
+			@Override
+			public void mouseClicked(MouseEvent e)
+			{
+				try
+				{
+					Class currentSelectedClass = classJList.getSelectedValue();
+					Teacher currentSelectedTeacher = teacherJList.getSelectedValue();
+
+					assignment.put(currentSelectedClass.getClassName(), currentSelectedTeacher.getName());
+					currentSelectedTeacher.addClass(currentSelectedClass);
+					currentSelectedClass.addTeacher(currentSelectedTeacher);
+					resultRefresh(resultModel, assignment);
+				} catch (Exception ex)
+				{
+					JOptionPane.showMessageDialog(null, "Please Select Class and Teacher!");
+				}
+			}
+		});
+
 		JButton exportBtn = new JButton("Export Assignment");
 		exportBtn.addMouseListener(new MouseAdapter()
 		{
@@ -155,7 +140,7 @@ public class Main
 							file = new File(jfc.getCurrentDirectory(), fname + ".txt");
 						}
 
-						try(FileWriter fw = new FileWriter(file))
+						try (FileWriter fw = new FileWriter(file))
 						{
 							fw.write(sb.toString());
 
@@ -165,7 +150,7 @@ public class Main
 						}
 
 						JOptionPane.showMessageDialog(
-								null,String.format("File Saved As %s",file.getName()));
+								null, String.format("File Saved As %s", file.getName()));
 					}
 				} else
 				{
@@ -186,5 +171,15 @@ public class Main
 		jf.pack();
 		jf.setVisible(true);
 
+	}
+
+	private static void resultRefresh(DefaultListModel<String> resultModel, Map<String, String> assignment)
+	{
+		resultModel.removeAllElements();
+		for (Map.Entry<String, String> entry :
+				assignment.entrySet())
+		{
+			resultModel.add(0, entry.getKey() + ": " + entry.getValue());
+		}
 	}
 }

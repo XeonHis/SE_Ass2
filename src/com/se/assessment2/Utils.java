@@ -2,8 +2,18 @@ package com.se.assessment2;
 
 import java.io.*;
 
+/**
+ * @author : Heting Ying
+ * @description : Utils class
+ */
 public class Utils
 {
+	/**
+	 * Read file and export to Java.lang.String
+	 *
+	 * @param fileName file path with name
+	 * @return content of file or null(if file not existed)
+	 */
 	public static String readFile(String fileName)
 	{
 		try (FileInputStream fileInputStream = new FileInputStream(fileName))

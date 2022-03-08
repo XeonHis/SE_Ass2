@@ -18,6 +18,7 @@ public class ListOfClass extends ListOfSomething
 
 	/**
 	 * Get ListOfClass instance
+	 *
 	 * @return ListOfClass object
 	 */
 	public static ListOfClass getInstance()

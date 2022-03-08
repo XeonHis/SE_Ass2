@@ -3,12 +3,14 @@ package com.se.assessment2;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
-/**
- * @author Paul Alan
- * @date 2022/3/7
- */
-public class classDirector
+
+public class ClassDirector extends Staff
 {
+
+	public ClassDirector(String name, int id)
+	{
+		super(name, id);
+	}
 
 	public void addClass(String fileName)
 	{
@@ -16,7 +18,7 @@ public class classDirector
 		String classJsonString = JSONObject.toJSONString(JSON.parseObject(content).getJSONArray("teaching requirements"));
 		for (Class aClass : JSONObject.parseArray(classJsonString, Class.class))
 		{
-			singleList.getClassList().addClass(aClass);
+			SingleList.getClassList().add(aClass);
 		}
 	}
 
@@ -26,7 +28,7 @@ public class classDirector
 		String teacherJsonString = JSONObject.toJSONString(JSON.parseObject(content).getJSONArray("Teacher"));
 		for (Teacher aTeacher : JSONObject.parseArray(teacherJsonString, Teacher.class))
 		{
-			singleList.getTeacherList().addTeacher(aTeacher);
+			SingleList.getTeacherList().add(aTeacher);
 		}
 	}
 }

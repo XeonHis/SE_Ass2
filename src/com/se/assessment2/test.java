@@ -1,16 +1,11 @@
 package com.se.assessment2;
 
-import java.io.PrintWriter;
+import javax.swing.*;
 
 public class test
 {
-	public static void main(String[] args)
-	{
-		LoC loC = new LoC();
-		for(int i =0; i <23;i++){
-			Class temp = new Class();
-			loC.addClass(temp);
-		}
-		System.out.println("");
-	}
+	private JLabel Class;
+	private JTextPane textPane1;
+	private JTextPane textPane2;
+	private JCheckBox checkBox1;
 }

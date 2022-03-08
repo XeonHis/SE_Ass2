@@ -1,10 +1,9 @@
 package com.se.assessment2;
 
-public class Teacher
+public class Teacher extends Staff
 {
 	private String major;
 	private int student_rating;
-	private String name;
 	private Class cls;
 	private boolean train;
 
@@ -25,17 +24,7 @@ public class Teacher
 
 	public Teacher()
 	{
-	}
-
-
-	public String getName()
-	{
-		return name;
-	}
-
-	public void setName(String name)
-	{
-		this.name = name;
+		super();
 	}
 
 	public String getMajor()
@@ -69,9 +58,10 @@ public class Teacher
 		this.train = train;
 	}
 
-	public Teacher(String name, String major, int student_rating)
+
+	public Teacher(String name, int id, String major, int student_rating)
 	{
-		this.name = name;
+		super(name, id);
 		this.major = major;
 		this.student_rating = student_rating;
 	}
@@ -79,8 +69,8 @@ public class Teacher
 	@Override
 	public String toString()
 	{
-		return "name=" + name +
-				", major=" + major +
-				", student_rating=" + student_rating;
+		return super.toString() +
+				", major: " + major +
+				", student_rating: " + student_rating;
 	}
 }

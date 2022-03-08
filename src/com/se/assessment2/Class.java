@@ -56,9 +56,7 @@ public class Class
 	@Override
 	public String toString()
 	{
-		return "Class{" +
-				"className='" + className + '\'' +
-				", college='" + college + '\'' +
-				'}';
+		return "College: " + college  +
+				", Class Name: " + className;
 	}
 }

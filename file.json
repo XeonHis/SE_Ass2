@@ -1,35 +1,64 @@
 {
-  "teaching requirements": [
+  "Class Requirements": [
     {
-      "classname": "math",
-      "college": "School of Science"
+      "classname": "mathematics",
+      "college": "College of Science"
+    },
+    {
+      "classname": "PE",
+      "college": "College of Sports"
     },
     {
       "classname": "physics",
-      "college": "School of Science"
+      "college": "College of Science"
     },
     {
-      "classname": "history",
-      "college": "School of Arts"
+      "classname": "music",
+      "college": "College of Arts"
     },
     {
-      "classname": "chemistry",
-      "college": "School of Science"
+      "classname": "robotics",
+      "college": "College of Engineering"
+    },
+    {
+      "classname": "computer science and technology",
+      "college": "College of Computer"
     }
   ],
-  "Teacher": [
+  "Teacher Details": [
     {
-      "name": "Bob",
+      "name": "Paul",
+      "id": 19,
+      "major": "computer science and technology",
+      "student_rating": 10,
+      "train": false
+    },
+    {
+      "name": "Tex",
+      "id": 67,
+      "major": "PE",
+      "student_rating": 5,
+      "train": false
+    },
+    {
+      "name": "Bobby",
       "id": 14,
-      "major": "history",
-      "student_rating": 6,
+      "major": "music",
+      "student_rating": 7,
       "train": false
     },
     {
       "name": "Mike",
       "id": 56,
-      "major": "math",
-      "student_rating": 8,
+      "major": "mathematics",
+      "student_rating": 9,
+      "train": false
+    },
+    {
+      "name": "John",
+      "id": 82,
+      "major": "PE",
+      "student_rating": 9,
       "train": false
     },
     {
@@ -42,14 +71,21 @@
     {
       "name": "Steve",
       "id": 8,
-      "major": "chemistry",
-      "student_rating": 3,
+      "major": "robotics",
+      "student_rating": 6,
+      "train": false
+    },
+    {
+      "name": "Teri",
+      "id": 84,
+      "major": "computer science and technology",
+      "student_rating": 6,
       "train": false
     },
     {
       "name": "James",
       "id": 55,
-      "major": "math",
+      "major": "mathematics",
       "student_rating": 10,
       "train": false
     },
@@ -63,15 +99,15 @@
     {
       "name": "Clark",
       "id": 29,
-      "major": "math",
+      "major": "mathematics",
       "student_rating": 7,
       "train": false
     },
     {
       "name": "Henson",
       "id": 85,
-      "major": "history",
-      "student_rating": 9,
+      "major": "music",
+      "student_rating": 5,
       "train": false
     }
   ]

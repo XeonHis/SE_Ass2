@@ -29,7 +29,7 @@ public class ClassDirector extends Staff
 	public void addClass(String fileName)
 	{
 		String content = Utils.readFile(fileName);
-		String classJsonString = JSONObject.toJSONString(JSON.parseObject(content).getJSONArray("teaching requirements"));
+		String classJsonString = JSONObject.toJSONString(JSON.parseObject(content).getJSONArray("Class Requirements"));
 		for (Class aClass : JSONObject.parseArray(classJsonString, Class.class))
 		{
 			SingleList.getClassList().add(aClass);
@@ -44,7 +44,7 @@ public class ClassDirector extends Staff
 	public void addTeacher(String fileName)
 	{
 		String content = Utils.readFile(fileName);
-		String teacherJsonString = JSONObject.toJSONString(JSON.parseObject(content).getJSONArray("Teacher"));
+		String teacherJsonString = JSONObject.toJSONString(JSON.parseObject(content).getJSONArray("Teacher Details"));
 		for (Teacher aTeacher : JSONObject.parseArray(teacherJsonString, Teacher.class))
 		{
 			SingleList.getTeacherList().add(aTeacher);

@@ -22,7 +22,7 @@ public class Main
 
 
 		JFrame jf = new JFrame();
-		jf.setLayout(new FlowLayout());
+		jf.setLayout(new BorderLayout());
 		jf.setResizable(true);
 		jf.setSize(600, 400);
 
@@ -162,10 +162,10 @@ public class Main
 		btnPanel.add(manualAssignBtn);
 		btnPanel.add(exportBtn);
 
-		jf.add(classPanel);
-		jf.add(teacherPanel);
-		jf.add(resultPanel);
-		jf.add(btnPanel);
+		jf.add(classPanel,BorderLayout.WEST);
+		jf.add(teacherPanel,BorderLayout.CENTER);
+		jf.add(resultPanel,BorderLayout.EAST);
+		jf.add(btnPanel,BorderLayout.SOUTH);
 
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jf.pack();

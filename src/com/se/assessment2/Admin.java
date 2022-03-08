@@ -33,7 +33,7 @@ public class Admin extends Staff
 				}
 			}
 		}
-		System.out.println(assignment);
+//		System.out.println(assignment);
 		for (Map.Entry<String, String> entry :
 				assignment.entrySet())
 		{

@@ -18,17 +18,24 @@ public class Admin extends Staff
 	public Admin(String name, int id)
 	{
 		super(name, id);
+		findAssignment();
 	}
 
 	// Store assignment of class and teacher
 	private static Map<String, String> assignment = new HashMap<>();
+
+	public static Map<String, String> getAssignment()
+	{
+		findAssignment();
+		return assignment;
+	}
 
 	/**
 	 * Algorithm to find assignment (select highest student rating one if same major).
 	 *
 	 * @return Automatic assignment
 	 */
-	public Map<String, String> getAssignment()
+	private static void findAssignment()
 	{
 		/*
 		Iterate all classes requirements
@@ -77,6 +84,6 @@ public class Admin extends Staff
 			cls.addTeacher(teacher);
 		}
 
-		return assignment;
+//		return assignment;
 	}
 }

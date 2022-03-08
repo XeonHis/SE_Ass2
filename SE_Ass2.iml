@@ -7,6 +7,25 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="com.alibaba.fastjson" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library name="com.alibaba.fastjson" type="repository">
+        <properties maven-id="com.alibaba:fastjson:1.2.17" />
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/fastjson-1.2.17.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/lib" recursive="false" />
+      </library>
+    </orderEntry>
   </component>
 </module>

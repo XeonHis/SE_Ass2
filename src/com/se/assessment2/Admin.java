@@ -80,7 +80,5 @@ public class Admin extends Staff
 			teacher.setTrain(true);
 			cls.addTeacher(teacher);
 		}
-
-//		return assignment;
 	}
 }

@@ -2,8 +2,11 @@ package com.se.assessment2;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Set;
 
 /**
  * @author : Heting Ying
@@ -18,7 +21,7 @@ public class ClassDirectorFrame extends JFrame
 	 */
 	public ClassDirectorFrame(String name, Admin admin)
 	{
-		this.setName(name);
+		this.setTitle(name);
 		this.setLayout(new FlowLayout());
 		this.setResizable(true);
 		this.setSize(600, 400);
@@ -41,8 +44,8 @@ public class ClassDirectorFrame extends JFrame
 		JLabel classJLabel = new JLabel("Class Name: ");
 		JLabel collegeJLabel = new JLabel("College Name: ");
 
-		JTextArea classJTextArea = new JTextArea();
-		JTextArea collegeJTextArea = new JTextArea();
+		JTextField classJTextArea = new JTextField();
+		JTextField collegeJTextArea = new JTextField();
 
 		classInputPanel.add(classJLabel);
 		classInputPanel.add(classJTextArea);
@@ -53,14 +56,40 @@ public class ClassDirectorFrame extends JFrame
 		Create and add components of teacher input panel
 		 */
 		JLabel teacherNameJLabel = new JLabel("Teacher Name: ");
-		JLabel teacherIdJLabel = new JLabel("Teacher id: ");
+		JLabel teacherIdJLabel = new JLabel("Teacher id(Numbers Only): ");
 		JLabel teacherMajorJLabel = new JLabel("Teacher Major: ");
-		JLabel teacherRateJLabel = new JLabel("Teacher's Rate: ");
+		JLabel teacherRateJLabel = new JLabel("Teacher's Rate(Numbers Only): ");
 
-		JTextArea teacherNameJTextArea = new JTextArea();
-		JTextArea teacherIdJTextArea = new JTextArea();
-		JTextArea teacherMajorJTextArea = new JTextArea();
-		JTextArea teacherRateJTextArea = new JTextArea();
+		JTextField teacherNameJTextArea = new JTextField();
+		JTextField teacherIdJTextArea = new JTextField();
+		JTextField teacherMajorJTextArea = new JTextField();
+		JTextField teacherRateJTextArea = new JTextField();
+
+		/*
+		 Set id and rate input area only allow integer
+		 */
+		teacherIdJTextArea.addKeyListener(new KeyAdapter()
+		{
+			@Override
+			public void keyTyped(KeyEvent e)
+			{
+				if (!(e.getKeyChar() >= KeyEvent.VK_0 && e.getKeyChar() <= KeyEvent.VK_9))
+				{
+					e.consume();
+				}
+			}
+		});
+		teacherRateJTextArea.addKeyListener(new KeyAdapter()
+		{
+			@Override
+			public void keyTyped(KeyEvent e)
+			{
+				if (!(e.getKeyChar() >= KeyEvent.VK_0 && e.getKeyChar() <= KeyEvent.VK_9))
+				{
+					e.consume();
+				}
+			}
+		});
 
 		teacherInputPanel.add(teacherNameJLabel);
 		teacherInputPanel.add(teacherNameJTextArea);
@@ -92,10 +121,20 @@ public class ClassDirectorFrame extends JFrame
 			public void mouseClicked(MouseEvent e)
 			{
 				ListOfClass classList = ListOfClass.getInstance();
-				Class newClass = new Class(classJTextArea.getText(), collegeJTextArea.getText());
-				classList.add(newClass);
-				JOptionPane.showMessageDialog(null,
-						"Class " + newClass.getClassName() + " Added!");
+				// If class input data exists
+				if (!classJTextArea.getText().equals("") && !collegeJTextArea.getText().equals(""))
+				{
+					Class newClass = new Class(classJTextArea.getText(), collegeJTextArea.getText());
+					classList.add(newClass);
+					JOptionPane.showMessageDialog(null,
+							"Class " + newClass.getClassName() + " Added!");
+					// Reset text input area
+					classJTextArea.setText("");
+					collegeJTextArea.setText("");
+				} else
+				{
+					JOptionPane.showMessageDialog(null, "Please Add Class Details!");
+				}
 			}
 		});
 		addTeacherBtn.addMouseListener(new MouseAdapter()
@@ -104,14 +143,29 @@ public class ClassDirectorFrame extends JFrame
 			public void mouseClicked(MouseEvent e)
 			{
 				ListOfTeacher teacherList = ListOfTeacher.getInstance();
-				Teacher newTeacher = new Teacher(
-						teacherNameJTextArea.getText(),
-						Integer.parseInt(teacherIdJTextArea.getText()),
-						teacherMajorJTextArea.getText(),
-						Integer.parseInt(teacherRateJTextArea.getText()));
-				teacherList.add(newTeacher);
-				JOptionPane.showMessageDialog(null,
-						"Teacher " + newTeacher.getName() + " Added!");
+				// If teacher input data exists
+				if (!teacherNameJTextArea.getText().equals("")
+						&& !teacherIdJTextArea.getText().equals("")
+						&& !teacherMajorJTextArea.getText().equals("")
+						&& !teacherRateJTextArea.getText().equals(""))
+				{
+					Teacher newTeacher = new Teacher(
+							teacherNameJTextArea.getText(),
+							Integer.parseInt(teacherIdJTextArea.getText()),
+							teacherMajorJTextArea.getText(),
+							Integer.parseInt(teacherRateJTextArea.getText()));
+					teacherList.add(newTeacher);
+					JOptionPane.showMessageDialog(null,
+							"Teacher " + newTeacher.getName() + " Added!");
+					// Reset text input area
+					teacherNameJTextArea.setText("");
+					teacherIdJTextArea.setText("");
+					teacherMajorJTextArea.setText("");
+					teacherRateJTextArea.setText("");
+				} else
+				{
+					JOptionPane.showMessageDialog(null, "Please Add Teacher Details!");
+				}
 			}
 		});
 

@@ -19,7 +19,7 @@ public class RoleSelectionFrame extends JFrame
 	 */
 	public RoleSelectionFrame(String name, Admin admin)
 	{
-		this.setName(name);
+		this.setTitle(name);
 		this.setLayout(new FlowLayout());
 		this.setResizable(true);
 		this.setSize(600, 400);

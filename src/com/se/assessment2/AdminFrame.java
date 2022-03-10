@@ -23,7 +23,7 @@ public class AdminFrame extends JFrame
 	 */
 	public AdminFrame(String name, Admin admin)
 	{
-		this.setName(name);
+		this.setTitle(name);
 		this.setLayout(new BorderLayout());
 		this.setResizable(true);
 		this.setSize(600, 400);
